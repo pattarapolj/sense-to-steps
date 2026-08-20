@@ -20,7 +20,7 @@ export const teamMembers = [
         "Ayutchet Loruangsin",
         "Occupational Therapist",
         "/Ayutchet_Loruangsin_OcupationalTherapist.jpg",
-        "scale-[3] origin-[50%_45%]",
+        "scale-[1.5] origin-[50%_45%]",
     ),
     member(
         "Chanakarn Puratana",
@@ -41,13 +41,13 @@ export const teamMembers = [
         "Nutcha Montalong",
         "Occupational Therapist",
         "/Nutcha_Montalong_OccupationalTherapist.jpg",
-        "scale-[3] origin-[50%_45%]",
+        "scale-[1.5] origin-[50%_45%]",
     ),
     member(
         "Pornnapat Ngamlertnapaporn",
         "Occupational Therapist",
         "/Pornnapat_Ngamlertnapaporn_OccupationalTherapist.jpg",
-        "scale-[3] origin-[50%_45%]",
+        "scale-[1.5] origin-[50%_45%]",
     ),
 ] as const satisfies readonly TeamMember[];
 
