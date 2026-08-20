@@ -107,6 +107,20 @@ button {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
+@keyframes moments-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.moments-marquee-track {
+  animation: moments-marquee 32s linear infinite;
+}
+
+.moments-marquee-track:hover {
+  animation-play-state: paused;
+}
+
 .section-cream,
 .section-yellow {
   background: #fff6e8;
@@ -205,6 +219,7 @@ button {
     --peek: 11%;
     --gap: 1rem;
   }
+
 }
 
 @media (min-width: 1024px) {
@@ -213,6 +228,7 @@ button {
     --peek: 14%;
     --gap: 1.25rem;
   }
+
 }
 
 .hero-panel {
@@ -308,6 +324,48 @@ button {
   transform: translateY(0);
 }
 
+/* Soft crossfade when switching TH ↔ EN */
+.locale-page {
+  view-transition-name: locale-page;
+}
+
+@keyframes locale-fade-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes locale-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::view-transition-old(locale-page) {
+  animation: locale-fade-out 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+::view-transition-new(locale-page) {
+  animation: locale-fade-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+::view-transition-group(locale-page) {
+  overflow: clip;
+}
+
+/* Keep the header snappy — only page content crossfades */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
@@ -318,6 +376,10 @@ button {
   .animate-fade-up,
   .animate-fade-up-delay {
     animation: none !important;
+  }
+
+  .moments-marquee-track {
+    animation: none;
   }
 
   .hero-curve-drift {
@@ -331,5 +393,10 @@ button {
 
   .reviews-track {
     transition: none !important;
+  }
+
+  ::view-transition-old(locale-page),
+  ::view-transition-new(locale-page) {
+    animation: none !important;
   }
 }

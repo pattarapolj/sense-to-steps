@@ -3,7 +3,6 @@
 import { Reveal } from "@/components/Reveal";
 import { PlayfulDecor } from "@/components/PlayfulDecor";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { site } from "@/lib/site";
 
 export function Letter() {
   const { t } = useLanguage();
@@ -27,13 +26,13 @@ export function Letter() {
         <Reveal delay={100}>
           <article className="letter-paper relative mx-auto max-w-2xl px-5 py-8 text-ink sm:px-8 sm:py-10 md:px-12 md:py-14">
             <div
-              className="letter-lines pointer-events-none absolute inset-x-5 top-20 bottom-8 sm:inset-x-8 sm:top-24 sm:bottom-10 md:inset-x-12"
+              className="pointer-events-none absolute inset-x-5 top-20 bottom-8 sm:inset-x-8 sm:top-24 sm:bottom-10 md:inset-x-12"
               aria-hidden="true"
             />
             <p className="relative font-display text-lg sm:text-xl md:text-2xl">
               {t.letter.greeting}
             </p>
-            <div className="relative mt-6 space-y-4 text-sm leading-[1.85] text-muted sm:mt-8 sm:space-y-5 sm:text-base sm:leading-[1.9] md:text-[1.05rem]">
+            <div className="relative mt-6 space-y-4 text-sm leading-[1.85] text-muted text-pretty sm:mt-8 sm:space-y-5 sm:text-base sm:leading-[1.9] md:text-[1.05rem]">
               {t.letter.paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 28)}>{paragraph}</p>
               ))}
@@ -41,7 +40,10 @@ export function Letter() {
             <div className="relative mt-8 space-y-1 sm:mt-10">
               <p className="text-sm text-muted sm:text-base">{t.letter.closing}</p>
               <p className="font-display text-lg text-c-accent sm:text-xl">
-                {site.name}
+                {t.letter.signature}
+              </p>
+              <p className="text-sm text-muted sm:text-base">
+                {t.letter.signatureRole}
               </p>
             </div>
           </article>

@@ -1,6 +1,6 @@
-/** Replace with your real Line Official Account URL when ready */
+/** Sense to Steps Line Official Account URL. */
 export const LINE_OA_URL =
-  process.env.NEXT_PUBLIC_LINE_OA_URL ?? "https://line.me/R/ti/p/@YOUR_LINE_OA";
+  process.env.NEXT_PUBLIC_LINE_OA_URL ?? "https://line.me/R/ti/p/@sensetosteps";
 
 /** Bump when replacing files in public/ so browsers fetch fresh copies. */
 export const ASSET_VERSION =
@@ -24,9 +24,28 @@ export const HERO_POSTER_SRC =
 export const LINE_QR_SRC =
   process.env.NEXT_PUBLIC_LINE_QR_SRC ?? "/line-qr.png";
 
+export const contactHandles = [
+  ["Facebook", "Sense to steps"],
+  ["Instagram", "sensetosteps"],
+  ["LINE", "@sensetosteps"],
+] as const;
+
+export const socialLinks = [
+  [
+    "Facebook",
+    "Sense to steps",
+    "https://www.facebook.com/share/1BeTTJx2Ho/?mibextid=wwXIfr",
+  ],
+  [
+    "Instagram",
+    "sensetosteps",
+    "https://www.instagram.com/sensetosteps?igsh=MzkxYXpkc29hMzcz&igsi=MzkxYXpkc29hMzcz",
+  ],
+] as const;
+
 export const site = {
   name: "SenseToSteps",
-  tagline: "ทุกร้อยยิ้มคือความสุขของเรา",
+  tagline: "ทุกรอยยิ้มคือความสุขของเรา",
   description:
     "บริการที่ช่วยเล่าเรื่องราวและพาคุณจากความรู้สึกไปสู่ก้าวถัดไปอย่างชัดเจน",
   lineOaUrl: LINE_OA_URL,

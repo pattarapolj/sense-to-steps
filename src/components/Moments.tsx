@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { Reveal } from "@/components/Reveal";
 import { PlayfulDecor } from "@/components/PlayfulDecor";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { site } from "@/lib/site";
+import { momentStories } from "@/lib/moments";
 
 export function Moments() {
   const { t } = useLanguage();
@@ -25,33 +26,38 @@ export function Moments() {
         </Reveal>
 
         <Reveal delay={100} className="mt-10 sm:mt-14">
-          <figure className="relative aspect-[16/10] overflow-hidden rounded-[2rem] sm:aspect-[21/9] sm:rounded-[2.5rem]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={site.momentMusicSrc}
-              alt={t.moments.musicCaption}
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-[#0870B0]/55 via-transparent to-transparent"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute left-5 top-5 h-3 w-12 rotate-[-24deg] rounded-full bg-[#F8B800] sm:left-8 sm:top-8"
-              aria-hidden="true"
-            />
-            <div
-              className="absolute left-5 top-10 h-3 w-16 rotate-[-10deg] rounded-full bg-[#F87000] sm:left-8 sm:top-14"
-              aria-hidden="true"
-            />
-            <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-8">
-              <p className="font-display text-lg text-white drop-shadow-sm sm:text-2xl">
-                {t.moments.musicCaption}
-              </p>
-            </figcaption>
-          </figure>
+          <div className="overflow-hidden" aria-label={t.moments.title}>
+            <div className="moments-marquee-track flex w-max">
+              {[0, 1].map((groupIndex) => (
+                <div
+                  key={groupIndex}
+                  className="flex gap-4 pr-4 sm:gap-6 sm:pr-6"
+                  aria-hidden={groupIndex === 1}
+                >
+                  {momentStories.map((story) => (
+                    <figure
+                      key={`${story.imageSrc}-${groupIndex}`}
+                      className="relative aspect-[4/3] w-[min(82vw,28rem)] overflow-hidden rounded-[2rem] bg-c-blue sm:rounded-[2.5rem]"
+                    >
+                      <Image
+                        src={story.imageSrc}
+                        alt={groupIndex === 0 ? t.moments[story.captionKey] : ""}
+                        fill
+                        sizes="(min-width: 640px) 28rem, 82vw"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0870B0]/70 via-transparent to-transparent" aria-hidden="true" />
+                      <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
+                        <p className="font-display text-lg text-white drop-shadow-sm sm:text-xl">
+                          {t.moments[story.captionKey]}
+                        </p>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

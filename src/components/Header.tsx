@@ -7,7 +7,6 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 
 const navHrefs = [
   { href: "#letter", key: "letter" },
-  { href: "#reviews", key: "reviews" },
   { href: "#process", key: "process" },
   { href: "#team", key: "team" },
   { href: "#contact", key: "contact" },
@@ -92,17 +91,21 @@ export function Header() {
           ))}
 
           <div
-            className="ml-2 flex items-center gap-0.5 rounded-full bg-c-blue/80 p-0.5"
+            className="relative ml-2 grid grid-cols-2 rounded-full bg-c-blue/80 p-0.5"
             role="group"
             aria-label="Language"
           >
+            <span
+              aria-hidden="true"
+              className={`pointer-events-none absolute inset-y-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-c-accent transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                locale === "en" ? "translate-x-full" : "translate-x-0"
+              }`}
+            />
             <button
               type="button"
               onClick={() => setLocale("th")}
-              className={`rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors duration-200 ${
-                locale === "th"
-                  ? "bg-c-accent text-white"
-                  : "text-muted hover:text-ink"
+              className={`relative z-10 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors duration-200 ${
+                locale === "th" ? "text-white" : "text-muted hover:text-ink"
               }`}
               aria-pressed={locale === "th"}
             >
@@ -111,10 +114,8 @@ export function Header() {
             <button
               type="button"
               onClick={() => setLocale("en")}
-              className={`rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors duration-200 ${
-                locale === "en"
-                  ? "bg-c-accent text-white"
-                  : "text-muted hover:text-ink"
+              className={`relative z-10 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors duration-200 ${
+                locale === "en" ? "text-white" : "text-muted hover:text-ink"
               }`}
               aria-pressed={locale === "en"}
             >
@@ -133,15 +134,21 @@ export function Header() {
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 lg:hidden">
           <div
-            className="flex items-center gap-0.5 rounded-full bg-c-blue/80 p-0.5"
+            className="relative grid grid-cols-2 rounded-full bg-c-blue/80 p-0.5"
             role="group"
             aria-label="Language"
           >
+            <span
+              aria-hidden="true"
+              className={`pointer-events-none absolute inset-y-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-c-accent transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                locale === "en" ? "translate-x-full" : "translate-x-0"
+              }`}
+            />
             <button
               type="button"
               onClick={() => setLocale("th")}
-              className={`rounded-full px-2 py-1 text-xs font-semibold ${
-                locale === "th" ? "bg-c-accent text-white" : "text-muted"
+              className={`relative z-10 rounded-full px-2 py-1 text-xs font-semibold transition-colors duration-200 ${
+                locale === "th" ? "text-white" : "text-muted"
               }`}
               aria-pressed={locale === "th"}
             >
@@ -150,8 +157,8 @@ export function Header() {
             <button
               type="button"
               onClick={() => setLocale("en")}
-              className={`rounded-full px-2 py-1 text-xs font-semibold ${
-                locale === "en" ? "bg-c-accent text-white" : "text-muted"
+              className={`relative z-10 rounded-full px-2 py-1 text-xs font-semibold transition-colors duration-200 ${
+                locale === "en" ? "text-white" : "text-muted"
               }`}
               aria-pressed={locale === "en"}
             >

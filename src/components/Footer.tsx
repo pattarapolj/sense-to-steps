@@ -27,16 +27,24 @@ export function Footer() {
             </p>
           </div>
         </div>
-        <a
-          href="#contact"
-          onClick={(e) => handleAnchorClick(e, "#contact")}
-          className="shrink-0 text-sm font-medium text-c-accent transition-opacity duration-200 hover:opacity-80"
-        >
-          {t.footer.talk}
-        </a>
+        <div className="flex shrink-0 text-sm font-medium text-c-accent">
+          <a
+            href="#contact"
+            onClick={(e) => handleAnchorClick(e, "#contact")}
+            className="transition-opacity duration-200 hover:opacity-80"
+          >
+            {t.footer.talk}
+          </a>
+        </div>
       </div>
       <p className="mx-auto mt-6 max-w-6xl px-4 text-xs text-muted sm:mt-8 sm:px-6 lg:px-8">
-        © {new Date().getFullYear()} {site.name}. {t.footer.rights}.
+        © {new Date().getFullYear()} {site.name}. {t.footer.rights}.{" "}
+        <a href="/privacy" className="underline-offset-4 hover:underline">
+          {t.footer.privacy}
+        </a>
+      </p>
+      <p className="mx-auto mt-2 max-w-6xl px-4 text-xs leading-relaxed text-muted sm:px-6 lg:px-8">
+        {t.footer.imageryDisclosure}
       </p>
     </footer>
   );

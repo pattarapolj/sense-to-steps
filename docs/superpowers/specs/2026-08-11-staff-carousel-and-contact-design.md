@@ -2,7 +2,7 @@
 
 ## Goal
 
-Replace the landing page's placeholder staff content with the seven supplied staff photographs, provide a paginated team carousel, and complete the public contact details.
+Replace the landing page's placeholder staff content with the six supplied staff photographs, provide a paginated team carousel, and complete the public contact details.
 
 ## Scope
 
@@ -22,7 +22,6 @@ The carousel uses local React state in the existing client component. It shows t
 
 ## Remaining owner-provided content
 
-- Four family reviews are still sample messages and need genuine family-approved testimonials.
 - `NEXT_PUBLIC_LINE_OA_URL` must be set to the real LINE Official Account URL; the supplied LINE handle alone does not establish a safe deep-link target.
 
 ## Verification

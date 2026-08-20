@@ -4,11 +4,12 @@ import {
   createContext,
   useCallback,
   useContext,
-  useLayoutEffect,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from "react";
+import { flushSync } from "react-dom";
 import {
   dictionaries,
   type Dictionary,
@@ -43,43 +44,65 @@ function readLocaleFromStorage(): Locale | null {
   return null;
 }
 
+function persistLocale(next: Locale) {
+  document.documentElement.lang = next;
+  try {
+    window.localStorage.setItem(STORAGE_KEY, next);
+  } catch {
+    /* private browsing */
+  }
+  const url = new URL(window.location.href);
+  url.searchParams.set("lang", next);
+  window.history.replaceState(null, "", url);
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function runLocaleTransition(update: () => void) {
+  const doc = document as Document & {
+    startViewTransition?: (callback: () => void) => unknown;
+  };
+
+  if (typeof doc.startViewTransition === "function" && !prefersReducedMotion()) {
+    doc.startViewTransition(() => {
+      flushSync(update);
+    });
+    return;
+  }
+
+  update();
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("th");
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const next = readLocaleFromUrl() ?? readLocaleFromStorage() ?? "th";
-    setLocaleState((current) => (current === next ? current : next));
     document.documentElement.lang = next;
+    if (next === "th") return;
+
+    const frame = window.requestAnimationFrame(() => setLocaleState(next));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
-  const setLocale = useCallback((next: Locale) => {
+  const applyLocale = useCallback((next: Locale) => {
     setLocaleState(next);
-    document.documentElement.lang = next;
-    try {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* private browsing */
-    }
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", next);
-    window.history.replaceState(null, "", url);
+    persistLocale(next);
   }, []);
+
+  const setLocale = useCallback(
+    (next: Locale) => {
+      if (locale === next) return;
+      runLocaleTransition(() => applyLocale(next));
+    },
+    [applyLocale, locale],
+  );
 
   const toggleLocale = useCallback(() => {
-    setLocaleState((prev) => {
-      const next = prev === "th" ? "en" : "th";
-      document.documentElement.lang = next;
-      try {
-        window.localStorage.setItem(STORAGE_KEY, next);
-      } catch {
-        /* private browsing */
-      }
-      const url = new URL(window.location.href);
-      url.searchParams.set("lang", next);
-      window.history.replaceState(null, "", url);
-      return next;
-    });
-  }, []);
+    setLocale(locale === "th" ? "en" : "th");
+  }, [locale, setLocale]);
 
   const value = useMemo(
     () => ({

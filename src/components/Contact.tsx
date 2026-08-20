@@ -3,7 +3,7 @@
 import { Reveal } from "@/components/Reveal";
 import { PlayfulDecor } from "@/components/PlayfulDecor";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { site } from "@/lib/site";
+import { contactHandles, site, socialLinks } from "@/lib/site";
 
 export function Contact() {
   const { t } = useLanguage();
@@ -39,25 +39,7 @@ export function Contact() {
                 width={220}
                 height={220}
                 className="h-[180px] w-[180px] object-contain sm:h-[200px] sm:w-[200px] md:h-[220px] md:w-[220px]"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  const fallback = e.currentTarget.nextElementSibling;
-                  if (fallback instanceof HTMLElement) {
-                    fallback.hidden = false;
-                  }
-                }}
               />
-              <div
-                hidden
-                className="flex h-[180px] w-[180px] flex-col items-center justify-center gap-3 rounded-xl bg-c-blue sm:h-[200px] sm:w-[200px] md:h-[220px] md:w-[220px]"
-              >
-                <span className="text-xs font-semibold tracking-[0.2em] text-ink">
-                  LINE
-                </span>
-                <span className="max-w-[9rem] text-center text-xs leading-relaxed text-muted">
-                  {t.contact.qrFallback}
-                </span>
-              </div>
             </div>
           </a>
         </Reveal>
@@ -85,6 +67,27 @@ export function Contact() {
           >
             {t.contact.link}
           </a>
+          <dl className="mt-6 grid gap-2 text-sm sm:mt-7 sm:text-base">
+            {contactHandles.map(([label, value]) => (
+              <div key={label} className="flex gap-2">
+                <dt className="font-semibold text-ink">{label}:</dt>
+                <dd className="text-ink/80">
+                  {socialLinks.some(([socialLabel]) => socialLabel === label) ? (
+                    <a
+                      href={socialLinks.find(([socialLabel]) => socialLabel === label)?.[2]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline-offset-4 hover:underline"
+                    >
+                      {value}
+                    </a>
+                  ) : (
+                    value
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
       </div>
     </section>

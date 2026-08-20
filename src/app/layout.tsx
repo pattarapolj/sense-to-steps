@@ -46,11 +46,6 @@ export default function RootLayout({
       className={`${anuphan.variable} ${mitr.variable} h-full antialiased`}
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var p=new URLSearchParams(location.search).get("lang");if(p==="en"||p==="th"){document.documentElement.lang=p;localStorage.setItem("sensetosteps-locale",p);}}catch(e){}})();`,
-          }}
-        />
         <link
           rel="preload"
           href={site.heroPosterSrc}
