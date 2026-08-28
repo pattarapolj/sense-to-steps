@@ -10,7 +10,7 @@ export const dictionaries = {
             talkWithUs: "มาคุยกับเรา",
         },
         hero: {
-            headline: "ทุกรอยยิ้มคือความสุขของเรา",
+            headline: "ทีมพัฒนาการเด็ก",
             tagline: "ทุกการรับรู้คือจุดเริ่มต้นของทุกก้าวแห่งการเติบโต",
             ctaLabel: "Let's talk",
             ctaTitle: "ไม่แน่ใจว่าต้องเริ่มต้นอย่างไร?",
@@ -103,7 +103,7 @@ export const dictionaries = {
             talkWithUs: "Talk with us",
         },
         hero: {
-            headline: "Every little smile warms our heart",
+            headline: "Child\’s development team",
             tagline: "Every sense is the beginning of every step of growth",
             ctaLabel: "Let's talk",
             ctaTitle: "Don't know how to start?",
