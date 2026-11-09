@@ -311,6 +311,22 @@ button {
   }
 }
 
+@keyframes playful-float {
+  from { translate: 0 0; }
+  to { translate: 4px -10px; }
+}
+
+/* Bottom-aligned shapes stay attached to the section boundary. */
+.playful-decor > span:not(.bottom-0) {
+  animation: playful-float 7s ease-in-out infinite alternate;
+}
+
+.playful-decor > span:nth-child(even) {
+  animation-duration: 9s;
+  animation-delay: -3s;
+  animation-direction: alternate-reverse;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -359,7 +375,21 @@ button {
   overflow: clip;
 }
 
-/* Keep the header snappy — only page content crossfades */
+/* Named snapshots paint above the root, regardless of the live header's z-index. */
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-group(site-header) {
+  z-index: 1;
+  animation: none;
+}
+
+::view-transition-old(site-header) {
+  display: none;
+}
+
+::view-transition-new(site-header),
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
@@ -367,6 +397,10 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .playful-decor > span {
+    animation: none;
+  }
+
   .reveal {
     opacity: 1;
     transform: none;

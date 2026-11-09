@@ -7,21 +7,23 @@ type PlayfulDecorProps = {
 export function PlayfulDecor({ variant = "a", className = "" }: PlayfulDecorProps) {
   return (
     <div
-      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+      className={`playful-decor pointer-events-none absolute inset-0 overflow-hidden ${className}`}
       aria-hidden="true"
     >
+      <span className="absolute left-[1%] top-[45%] h-2 w-2 rounded-full bg-[#F87000]/70 sm:h-3 sm:w-3" />
+      <span className="absolute right-[1%] top-[65%] h-2 w-2 rounded-full bg-[#0870B0]/60 sm:h-3 sm:w-3" />
       {variant === "a" && (
         <>
           <span className="absolute -left-6 top-10 h-24 w-24 rounded-full bg-[#0870B0]/15 sm:h-32 sm:w-32" />
           <span className="absolute -right-4 bottom-8 h-28 w-28 rounded-full bg-[#F87000]/20 sm:-right-8 sm:h-40 sm:w-40" />
-          <span className="absolute right-[18%] top-16 h-3 w-10 rotate-[-28deg] rounded-full bg-[#F8B800]" />
-          <span className="absolute right-[14%] top-24 h-3 w-14 rotate-[-12deg] rounded-full bg-[#10A068]" />
+          <span className="absolute right-[18%] top-5 h-3 w-10 rotate-[-28deg] rounded-full bg-[#F8B800] sm:top-16" />
+          <span className="absolute right-[14%] top-10 h-3 w-14 rotate-[-12deg] rounded-full bg-[#10A068] sm:top-24" />
         </>
       )}
       {variant === "b" && (
         <>
-          <span className="absolute left-[8%] top-8 h-3 w-12 rotate-[22deg] rounded-full bg-[#F8B800]" />
-          <span className="absolute left-[6%] top-14 h-3 w-16 rotate-[8deg] rounded-full bg-[#F87000]" />
+          <span className="absolute left-[8%] top-4 h-3 w-12 rotate-[22deg] rounded-full bg-[#F8B800] sm:top-8" />
+          <span className="absolute left-[6%] top-9 h-3 w-16 rotate-[8deg] rounded-full bg-[#F87000] sm:top-14" />
           <span className="absolute -bottom-10 right-[10%] h-36 w-36 rounded-full bg-[#0870B0]/12" />
           <span className="absolute bottom-0 right-[22%] h-16 w-32 rounded-t-full bg-[#F87000]/35" />
         </>

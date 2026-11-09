@@ -1,6 +1,6 @@
 export type TeamMember = {
     name: string;
-    role: string;
+    role: "Occupational Therapist" | "Speech and Language Pathologist" | "Play Facilitator" | "Physical Therapist";
     imageSrc: string;
     alt: string;
     imageClassName?: string;
@@ -8,7 +8,7 @@ export type TeamMember = {
 
 function member(
     name: string,
-    role: string,
+    role: TeamMember["role"],
     imageSrc: string,
     imageClassName?: string,
 ): TeamMember {

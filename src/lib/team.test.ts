@@ -18,7 +18,7 @@ describe("teamMembers", () => {
       role: "Occupational Therapist",
       imageSrc: "/Ayutchet_Loruangsin_OcupationalTherapist.jpg",
       alt: "Ayutchet Loruangsin, Occupational Therapist",
-      imageClassName: "scale-[3] origin-[50%_45%]",
+      imageClassName: "scale-[1.5] origin-[50%_45%]",
     });
   });
 });

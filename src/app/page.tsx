@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Letter } from "@/components/Letter";
 import { Moments } from "@/components/Moments";
 import { Process } from "@/components/Process";
+import { Services } from "@/components/Services";
 import { Team } from "@/components/Team";
 
 export const dynamic = "force-static";
@@ -18,6 +19,7 @@ export default function Home() {
           <Hero />
           <Letter />
           <Moments />
+          <Services />
           <Process />
           <Team />
           <Contact />

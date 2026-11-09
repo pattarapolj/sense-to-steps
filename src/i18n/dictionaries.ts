@@ -6,8 +6,22 @@ export const dictionaries = {
             letter: "ถึงคุณพ่อคุณแม่",
             process: "ขั้นตอนการให้บริการ",
             team: "ทีมงาน",
+            events: "กิจกรรมที่ผ่านมา",
             contact: "Contact",
             talkWithUs: "มาคุยกับเรา",
+        },
+        events: {
+            title: "เล่น เรียนรู้ เก็บความทรงจำ",
+            intro: "ย้อนดูช่วงเวลาแห่งการเล่นและการเรียนรู้ไปกับ Sense to Steps",
+            photosSoon: "ภาพบรรยากาศเร็ว ๆ นี้",
+            detailsSoon: "รายละเอียดกิจกรรมจะอัปเดตเร็ว ๆ นี้",
+            viewAlbum: "ดูภาพความสนุก",
+            hideAlbum: "ซ่อนภาพ",
+            openPhoto: "เปิดภาพที่ {number} ขนาดเต็ม",
+            items: [
+                { title: "Boo! Spooky Play", theme: "ที่ Habitomall", description: "แปลงร่างเป็นผีตัวน้อย ออกผจญภัยในเมืองฮาโลวีนสุดตื่นเต้น พร้อมกับกิจกรรมการเล่น และสร้างสรรค์ผลงานผ่านการระบายสี ช่วยเสริมสร้างจินตนาการ พัฒนากล้ามเนื้อมัดเล็ก-มัดใหญ่ ทักษะสังคม และการทำงานร่วมกันผ่านการเล่นอย่างสร้างสรรค์" },
+                { title: "Pirate Treasure Hunt!", theme: "ที่ RQ49", description: "สวมบทบาทลูกเรือโจรสลัด ออกผจญภัยล่าสมบัติและแก้ปริศนาเป็นทีม กิจกรรมเสริมสร้างปฏิสัมพันธ์ (Social skills) พร้อมส่งเสริมพัฒนาการครบ 5 ด้าน ผ่านการเล่น" },
+            ],
         },
         hero: {
             headline: "ทีมพัฒนาการเด็ก",
@@ -41,6 +55,30 @@ export const dictionaries = {
             worldCaption: "เตรียมความพร้อมสู่โลกกว้าง",
             sensoryCaption: "เรียนรู้ผ่านการเล่นแบบ Sensory-Based",
         },
+        services: {
+            eyebrow: "ดูแลทุกด้านของพัฒนาการ",
+            title: "หลากหลายความเชี่ยวชาญ เพื่อทุกก้าวของน้องๆ",
+            subtitle: "ทีมสหวิชาชีพของเราร่วมดูแลและส่งเสริมพัฒนาการ ให้น้องๆ เติบโตผ่านการเล่นในจังหวะของตัวเอง",
+            imageAlt: "เด็กๆ กำลังเล่นบล็อกไม้สีสันสดใสและของเล่นในห้องเล่น",
+            items: [
+                {
+                    title: "นักกิจกรรมบำบัด",
+                    detail: "ส่งเสริมทักษะการใช้ชีวิตประจำวัน การเรียนรู้ และการเข้าสังคม เพื่อให้น้องๆ พึ่งพาตัวเองได้สมวัยผ่านการเล่น",
+                },
+                {
+                    title: "นักแก้ไขการพูดและการสื่อความหมาย",
+                    detail: "ส่งเสริมพัฒนาการด้านภาษาและการพูด เพื่อให้น้องๆ สื่อสารความต้องการและเข้าใจผู้อื่นได้อย่างมั่นใจ",
+                },
+                {
+                    title: "กายภาพบำบัด",
+                    detail: "ส่งเสริมพัฒนาการด้านร่างกายและการเคลื่อนไหว เพื่อให้น้องๆ มีกล้ามเนื้อที่แข็งแรงและพร้อมสำหรับทุกก้าวของการเรียนรู้",
+                },
+                {
+                    title: "ผู้อำนวยการเล่น",
+                    detail: "ดูแลด้านอารมณ์และจิตใจ โดยใช้การเล่นเป็นพื้นที่ปลอดภัยให้น้องๆ ได้แสดงความรู้สึกออกมาอย่างเป็นธรรมชาติและอิสระ",
+                },
+            ],
+        },
         process: {
             eyebrow: "การให้บริการของเรา",
             title: "ขั้นตอนการให้บริการ",
@@ -71,6 +109,12 @@ export const dictionaries = {
         },
         team: {
             eyebrow: "ทีมของเรา",
+            roles: {
+                "Occupational Therapist": "นักกิจกรรมบำบัด",
+                "Speech and Language Pathologist": "นักแก้ไขการพูดและการสื่อความหมาย",
+                "Play Facilitator": "ผู้อำนวยการเล่น",
+                "Physical Therapist": "นักกายภาพบำบัด",
+            },
             title: "ทีมงานของเรา",
             subtitle: "คนที่อยู่เคียงข้างคุณพ่อคุณแม่ในทุกก้าว",
             previous: "ดูสมาชิกทีมคนก่อนหน้า",
@@ -99,8 +143,22 @@ export const dictionaries = {
             letter: "For Parents",
             process: "How We Serve",
             team: "Our Team",
+            events: "Past Events",
             contact: "Contact",
             talkWithUs: "Talk with us",
+        },
+        events: {
+            title: "Play, discover, make memories.",
+            intro: "Looking back on moments of play and discovery with Sense to Steps.",
+            photosSoon: "Event photos coming soon",
+            detailsSoon: "More event details coming soon.",
+            viewAlbum: "See the fun",
+            hideAlbum: "Hide photos",
+            openPhoto: "Open photo {number} at full size",
+            items: [
+                { title: "Boo! Spooky Play", theme: "At Habitomall", description: "Transform into a little ghosts and embark on an exciting Halloween Town! Enjoy social play activities and art&crafting that spark an imagination, enhance fine and gross motor skills, and foster social connections and teamwork through creative play." },
+                { title: "Pirate Treasure Hunt!", theme: "At RQ49", description: "Set sail as brave pirate crew members on an exciting treasure hunt! Kids work together to solve puzzles, build social skills, and enhance all 5 key areas of child development through interactive, story-driven play." },
+            ],
         },
         hero: {
             headline: "Child\’s development team",
@@ -135,6 +193,30 @@ export const dictionaries = {
             worldCaption: "Preparing for a wider world",
             sensoryCaption: "Learning through sensory-based play",
         },
+        services: {
+            eyebrow: "Supporting every part of development",
+            title: "Different expertise. Every little step.",
+            subtitle: "Our multidisciplinary team supports your child's development through play, helping them grow at their own pace.",
+            imageAlt: "Children playing with colorful wooden blocks and toys in a playroom",
+            items: [
+                {
+                    title: "Occupational Therapist",
+                    detail: "Builds everyday living, learning, and social skills through play, helping children develop age-appropriate independence.",
+                },
+                {
+                    title: "Speech and Language Pathologist",
+                    detail: "Supports language and speech development, helping children express their needs and understand others with confidence.",
+                },
+                {
+                    title: "Physical Therapy",
+                    detail: "Supports physical and movement development, helping children build strong muscles and get ready for every step of learning.",
+                },
+                {
+                    title: "Play Facilitator",
+                    detail: "Nurtures emotional and psychological well-being through play, creating a safe space for children to express their feelings naturally and freely.",
+                },
+            ],
+        },
         process: {
             eyebrow: "How we serve",
             title: "Our service process",
@@ -165,6 +247,12 @@ export const dictionaries = {
         },
         team: {
             eyebrow: "Our team",
+            roles: {
+                "Occupational Therapist": "Occupational Therapist",
+                "Speech and Language Pathologist": "Speech and Language Pathologist",
+                "Play Facilitator": "Play Facilitator",
+                "Physical Therapist": "Physical Therapist",
+            },
             title: "Our team",
             subtitle: "The team walking alongside parents every step.",
             previous: "Show previous team member",

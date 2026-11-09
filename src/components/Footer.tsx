@@ -1,14 +1,18 @@
 "use client";
 
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { PlayfulDecor } from "@/components/PlayfulDecor";
 import { site } from "@/lib/site";
 import { handleAnchorClick } from "@/lib/smoothScroll";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
   const { t } = useLanguage();
+  const contactHref = usePathname() === "/" ? "#contact" : "/#contact";
 
   return (
-    <footer className="section-cream border-t border-border py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:py-10">
+    <footer className="section-cream relative isolate overflow-hidden border-t border-border py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:py-10">
+      <PlayfulDecor variant="c" className="-z-10 opacity-40" />
       <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-start gap-3 sm:items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -29,8 +33,8 @@ export function Footer() {
         </div>
         <div className="flex shrink-0 text-sm font-medium text-c-accent">
           <a
-            href="#contact"
-            onClick={(e) => handleAnchorClick(e, "#contact")}
+            href={contactHref}
+            onClick={(e) => handleAnchorClick(e, contactHref)}
             className="transition-opacity duration-200 hover:opacity-80"
           >
             {t.footer.talk}

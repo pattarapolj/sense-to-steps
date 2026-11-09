@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 import { handleAnchorClick } from "@/lib/smoothScroll";
 import { useLanguage } from "@/i18n/LanguageProvider";
@@ -9,10 +10,13 @@ const navHrefs = [
   { href: "#letter", key: "letter" },
   { href: "#process", key: "process" },
   { href: "#team", key: "team" },
+  { href: "/events", key: "events" },
   { href: "#contact", key: "contact" },
 ] as const;
 
 export function Header() {
+  const pathname = usePathname();
+  const homeHref = pathname === "/" ? "" : "/";
   const { t, locale, setLocale } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -44,12 +48,12 @@ export function Header() {
   }, [open]);
 
   const navItems = navHrefs.map((item) => ({
-    href: item.href,
+    href: item.href.startsWith("#") ? `${homeHref}${item.href}` : item.href,
     label: t.nav[item.key],
   }));
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-5 sm:pt-4">
+    <header className="site-header fixed inset-x-0 top-0 z-50 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-5 sm:pt-4">
       <div
         className={`nav-shell mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 rounded-2xl border px-2.5 sm:h-16 sm:gap-3 sm:px-5 ${
           scrolled || open
@@ -58,10 +62,10 @@ export function Header() {
         }`}
       >
         <a
-          href="#top"
+          href={`${homeHref}#top`}
           className="group flex min-w-0 items-center gap-2 rounded-xl sm:gap-2.5"
           onClick={(e) => {
-            handleAnchorClick(e, "#top");
+            handleAnchorClick(e, `${homeHref}#top`);
             setOpen(false);
           }}
         >
@@ -83,6 +87,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
               onClick={(e) => handleAnchorClick(e, item.href)}
               className="rounded-xl px-3 py-2 text-sm text-muted transition-colors duration-200 hover:bg-c-blue hover:text-ink"
             >
@@ -124,8 +129,8 @@ export function Header() {
           </div>
 
           <a
-            href="#contact"
-            onClick={(e) => handleAnchorClick(e, "#contact")}
+            href={`${homeHref}#contact`}
+            onClick={(e) => handleAnchorClick(e, `${homeHref}#contact`)}
             className="btn-accent ml-2 rounded-full px-4 py-2 text-sm font-medium"
           >
             {t.nav.talkWithUs}
@@ -195,6 +200,7 @@ export function Header() {
               <a
                 key={item.href}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
                 className="rounded-xl px-3 py-3 text-sm text-ink hover:bg-c-blue"
                 onClick={(e) => {
                   handleAnchorClick(e, item.href);
@@ -205,10 +211,10 @@ export function Header() {
               </a>
             ))}
             <a
-              href="#contact"
+              href={`${homeHref}#contact`}
               className="btn-accent mt-1 rounded-full px-4 py-3 text-center text-sm font-medium"
               onClick={(e) => {
-                handleAnchorClick(e, "#contact");
+                handleAnchorClick(e, `${homeHref}#contact`);
                 setOpen(false);
               }}
             >

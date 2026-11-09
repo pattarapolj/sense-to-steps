@@ -126,7 +126,7 @@ export function Team() {
                       <div className="relative aspect-[4/5] overflow-hidden bg-c-blue">
                         <Image
                           src={member.imageSrc}
-                          alt={groupIndex === 1 ? member.alt : ""}
+                          alt={groupIndex === 1 ? `${member.name}, ${t.team.roles[member.role]}` : ""}
                           fill
                           sizes="(min-width: 640px) 12rem, 10.5rem"
                           className={`object-cover ${member.imageClassName ?? ""}`}
@@ -137,7 +137,7 @@ export function Team() {
                           {member.name}
                         </p>
                         <p className="mt-1 text-sm font-medium leading-snug text-c-accent">
-                          {member.role}
+                          {t.team.roles[member.role]}
                         </p>
                       </div>
                     </article>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/Reveal";
+import { PlayfulDecor } from "@/components/PlayfulDecor";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { site } from "@/lib/site";
 
@@ -10,9 +11,10 @@ export function Process() {
     return (
         <section
             id="process"
-            className="section-orange scroll-mt-24 overflow-hidden py-14 sm:scroll-mt-28 sm:py-20 lg:py-28"
+            className="section-orange relative scroll-mt-24 overflow-hidden py-14 sm:scroll-mt-28 sm:py-20 lg:py-28"
         >
-            <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:gap-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+            <PlayfulDecor variant="c" />
+            <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-4 sm:gap-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
                 <Reveal className="relative mx-auto flex w-full max-w-md items-center justify-center py-6 sm:max-w-lg sm:py-8 lg:mx-0 lg:max-w-none">
                     {/* Soft playful blobs */}
                     <span

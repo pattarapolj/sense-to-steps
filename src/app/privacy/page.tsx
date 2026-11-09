@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PlayfulDecor } from "@/components/PlayfulDecor";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -9,8 +10,9 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="section-cream min-h-screen px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-      <article className="mx-auto max-w-3xl rounded-3xl bg-white p-6 shadow-soft-md sm:p-10">
+    <main className="section-cream relative min-h-screen overflow-hidden px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <PlayfulDecor variant="a" />
+      <article className="relative z-10 mx-auto max-w-3xl rounded-3xl bg-white p-6 shadow-soft-md sm:p-10">
         <Link href="/" className="text-sm font-medium text-c-accent underline-offset-4 hover:underline">
           ← กลับหน้าแรก / Back to home
         </Link>
