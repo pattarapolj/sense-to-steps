@@ -44,9 +44,13 @@ function getLanDevOrigins(): string[] {
   return [...hosts];
 }
 
+const isCloudflareBuild = process.env.WORKERS_CI === "1";
+
 const nextConfig: NextConfig = {
+  output: isCloudflareBuild ? "export" : undefined,
+  images: { unoptimized: isCloudflareBuild },
   allowedDevOrigins: getLanDevOrigins(),
-  async headers() {
+  headers: isCloudflareBuild ? undefined : async function headers() {
     return [
       {
         source:

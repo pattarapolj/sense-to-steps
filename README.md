@@ -18,6 +18,27 @@ npm run build
 npm run start
 ```
 
+## Cloudflare Workers deployment
+
+Use `npm run build` as the build command and `npx wrangler deploy` as the
+deploy command (or `npx wrangler versions upload` for preview versions).
+Workers Builds sets `WORKERS_CI=1` automatically. In that environment, Next.js
+exports the site to `out/`, and `wrangler.json` publishes that directory.
+Images are served as static files because this deployment has no Next.js image server.
+Missing routes use the exported 404 page.
+
+To reproduce the Cloudflare build in PowerShell:
+
+```powershell
+$env:WORKERS_CI = "1"
+npm run build
+npx wrangler deploy --dry-run
+Remove-Item Env:WORKERS_CI
+```
+
+The normal local production build above continues to use the Next.js server.
+The configured Worker name is `sense-to-steps`; it must match the Cloudflare project.
+
 ## Share with others on your network
 
 The dev server listens on all interfaces (`0.0.0.0`), so phones on the same Wi‑Fi can open:
