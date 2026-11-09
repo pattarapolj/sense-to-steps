@@ -2,6 +2,12 @@ export type Locale = "th" | "en";
 
 export const dictionaries = {
     th: {
+        notFound: {
+            title: "อุ๊บส์! ไม่พบหน้านี้",
+            body: "หน้านี้อาจถูกย้าย หรือที่อยู่ไม่ถูกต้อง กลับไปเริ่มต้นก้าวใหม่ด้วยกันนะ",
+            home: "กลับหน้าแรก",
+            events: "แวะดูภาพความสนุก",
+        },
         nav: {
             letter: "ถึงคุณพ่อคุณแม่",
             process: "ขั้นตอนการให้บริการ",
@@ -139,6 +145,12 @@ export const dictionaries = {
         },
     },
     en: {
+        notFound: {
+            title: "Oops! This page wandered off.",
+            body: "The page may have moved, or the address might be incorrect. Let's take a little step back and find your way.",
+            home: "Back to home",
+            events: "Explore our happy moments",
+        },
         nav: {
             letter: "For Parents",
             process: "How We Serve",
