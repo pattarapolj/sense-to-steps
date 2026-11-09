@@ -1,21 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Anuphan, Mitr } from "next/font/google";
+import localFont from "next/font/local";
 import { Providers } from "@/components/Providers";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const anuphan = Anuphan({
+const anuphan = localFont({
+  src: "./fonts/Anuphan-Variable.woff2",
   variable: "--font-anuphan",
-  subsets: ["thai", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "100 700",
   display: "block",
   preload: true,
 });
 
-const mitr = Mitr({
+const mitr = localFont({
+  src: [
+    { path: "./fonts/Mitr-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Mitr-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/Mitr-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/Mitr-Bold.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-mitr",
-  subsets: ["thai", "latin"],
-  weight: ["400", "500", "600", "700"],
   display: "block",
   preload: true,
 });
