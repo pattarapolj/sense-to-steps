@@ -2,6 +2,18 @@ export type Locale = "th" | "en";
 
 export const dictionaries = {
     th: {
+        reviews: {
+            eyebrow: "เสียงจากครอบครัวของเรา",
+            title: "ทุกก้าวเล็ก ๆ ที่มีความหมาย",
+            subtitle: "เรื่องราวและความประทับใจจากผู้ปกครองที่ร่วมเดินทางไปกับ Sense to Steps",
+            parent: "ผู้ปกครอง",
+            georgeFamily: "ครอบครัวของ George",
+            facebook: "รีวิวจาก Facebook",
+            directMessage: "ข้อความจากผู้ปกครอง",
+            readMore: "อ่านรีวิวฉบับเต็ม",
+            readLess: "ย่อรีวิว",
+            translated: "แปลจากรีวิวต้นฉบับ",
+        },
         notFound: {
             title: "อุ๊บส์! ไม่พบหน้านี้",
             body: "หน้านี้อาจถูกย้าย หรือที่อยู่ไม่ถูกต้อง กลับไปเริ่มต้นก้าวใหม่ด้วยกันนะ",
@@ -9,6 +21,7 @@ export const dictionaries = {
             events: "แวะดูภาพความสนุก",
         },
         nav: {
+            reviews: "รีวิวผู้ปกครอง",
             letter: "ถึงคุณพ่อคุณแม่",
             process: "ขั้นตอนการให้บริการ",
             team: "ทีมงาน",
@@ -145,6 +158,18 @@ export const dictionaries = {
         },
     },
     en: {
+        reviews: {
+            eyebrow: "Voices from our families",
+            title: "Little steps, meaningful progress",
+            subtitle: "Stories and kind words from parents on their journey with Sense to Steps.",
+            parent: "Parent",
+            georgeFamily: "George’s family",
+            facebook: "Facebook review",
+            directMessage: "Direct message",
+            readMore: "Read full review",
+            readLess: "Show less",
+            translated: "Translated from the original review",
+        },
         notFound: {
             title: "Oops! This page wandered off.",
             body: "The page may have moved, or the address might be incorrect. Let's take a little step back and find your way.",
@@ -155,6 +180,7 @@ export const dictionaries = {
             letter: "For Parents",
             process: "How We Serve",
             team: "Our Team",
+            reviews: "Parent Reviews",
             events: "Past Events",
             contact: "Contact",
             talkWithUs: "Talk with us",

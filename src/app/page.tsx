@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Letter } from "@/components/Letter";
 import { Moments } from "@/components/Moments";
 import { Process } from "@/components/Process";
+import { Reviews } from "@/components/Reviews";
 import { Services } from "@/components/Services";
 import { Team } from "@/components/Team";
 
@@ -22,6 +23,7 @@ export default function Home() {
           <Services />
           <Process />
           <Team />
+          <Reviews />
           <Contact />
         </main>
         <Footer />

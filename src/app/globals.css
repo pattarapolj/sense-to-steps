@@ -202,31 +202,20 @@ button {
 }
 
 /* Reviews carousel — responsive peek / slide width */
-.reviews-carousel {
-  --slide-w: 86%;
-  --peek: 7%;
-  --gap: 0.75rem;
-}
-
 .reviews-slide {
-  width: var(--slide-w);
-  margin-right: var(--gap);
+  width: 86%;
 }
 
 @media (min-width: 640px) {
-  .reviews-carousel {
-    --slide-w: 78%;
-    --peek: 11%;
-    --gap: 1rem;
+  .reviews-slide {
+    width: 60%;
   }
 
 }
 
 @media (min-width: 1024px) {
-  .reviews-carousel {
-    --slide-w: 72%;
-    --peek: 14%;
-    --gap: 1.25rem;
+  .reviews-slide {
+    width: calc((100% - 3rem) / 2.5);
   }
 
 }
