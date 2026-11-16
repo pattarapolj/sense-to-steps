@@ -68,11 +68,9 @@ export const dictionaries = {
             signatureRole: "นักกิจกรรมบำบัด และทีมสหวิชาชีพ Sense to Steps",
         },
         moments: {
-            eyebrow: "ช่วงเวลาเล็ก ๆ",
-            title: "ทุกก้าวของการเรียนรู้ผ่านการเล่น",
-            writingCaption: "การเล่นที่สนุก นำไปสู่การเขียนที่ดี",
-            worldCaption: "เตรียมความพร้อมสู่โลกกว้าง",
-            sensoryCaption: "เรียนรู้ผ่านการเล่นแบบ Sensory-Based",
+            eyebrow: "กิจกรรมที่ผ่านมา",
+            title: "เล่นด้วยกัน เติบโตไปด้วยกัน",
+            viewEvent: "ดูเรื่องราวและภาพกิจกรรม",
         },
         services: {
             eyebrow: "ดูแลทุกด้านของพัฒนาการ",
@@ -225,11 +223,9 @@ export const dictionaries = {
                 "Occupational Therapist & the Sense to Steps Multidisciplinary Team",
         },
         moments: {
-            eyebrow: "Little moments",
-            title: "Every step of learning through play",
-            writingCaption: "Fun play leads to confident writing",
-            worldCaption: "Preparing for a wider world",
-            sensoryCaption: "Learning through sensory-based play",
+            eyebrow: "Past events",
+            title: "Shared adventures. Little steps forward.",
+            viewEvent: "Explore this event",
         },
         services: {
             eyebrow: "Supporting every part of development",

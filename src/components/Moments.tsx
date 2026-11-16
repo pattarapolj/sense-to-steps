@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { PlayfulDecor } from "@/components/PlayfulDecor";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { momentStories } from "@/lib/moments";
+import { eventCovers } from "@/lib/moments";
 
 export function Moments() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   return (
     <section
@@ -23,41 +24,42 @@ export function Moments() {
           <h2 className="mt-4 font-display text-2xl tracking-tight text-ink sm:text-3xl lg:text-4xl">
             {t.moments.title}
           </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+            {t.events.intro}
+          </p>
         </Reveal>
 
-        <Reveal delay={100} className="mt-10 sm:mt-14">
-          <div className="overflow-hidden" aria-label={t.moments.title}>
-            <div className="moments-marquee-track flex w-max">
-              {[0, 1].map((groupIndex) => (
-                <div
-                  key={groupIndex}
-                  className="flex gap-4 pr-4 sm:gap-6 sm:pr-6"
-                  aria-hidden={groupIndex === 1}
-                >
-                  {momentStories.map((story) => (
-                    <figure
-                      key={`${story.imageSrc}-${groupIndex}`}
-                      className="relative aspect-[4/3] w-[min(82vw,28rem)] overflow-hidden rounded-[2rem] bg-c-blue sm:rounded-[2.5rem]"
-                    >
-                      <Image
-                        src={story.imageSrc}
-                        alt={groupIndex === 0 ? t.moments[story.captionKey] : ""}
-                        fill
-                        sizes="(min-width: 640px) 28rem, 82vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0870B0]/70 via-transparent to-transparent" aria-hidden="true" />
-                      <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
-                        <p className="font-display text-lg text-white drop-shadow-sm sm:text-xl">
-                          {t.moments[story.captionKey]}
-                        </p>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
+        <Reveal delay={100} className="mt-8 grid gap-6 md:grid-cols-2 sm:mt-10">
+          {eventCovers.map((imageSrc, index) => (
+            <Link
+              key={imageSrc}
+              href={`/events?lang=${locale}#event-${index}`}
+              className={`group overflow-hidden rounded-[2rem] text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-c-accent ${index === 0 ? "bg-c-orange/45" : "bg-c-blue/50"}`}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={imageSrc}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1152px) 532px, (min-width: 768px) 46vw, 92vw"
+                  className="object-cover motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:scale-105"
+                />
+                <span className="absolute left-5 top-5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-medium text-ink">
+                  {t.nav.events}
+                </span>
+              </div>
+              <div className="p-6 sm:p-8">
+                <p className="text-sm text-muted">{t.events.items[index].theme}</p>
+                <h3 lang="en" className="mt-2 font-display text-2xl leading-snug sm:text-3xl">
+                  {t.events.items[index].title}
+                </h3>
+                <span className="mt-5 inline-flex items-center gap-3 text-sm font-semibold text-c-accent group-hover:underline">
+                  {t.moments.viewEvent}
+                  <span aria-hidden="true" className="motion-safe:transition-transform motion-safe:group-hover:translate-x-1">→</span>
+                </span>
+              </div>
+            </Link>
+          ))}
         </Reveal>
       </div>
     </section>

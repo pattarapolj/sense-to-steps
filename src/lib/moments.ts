@@ -1,14 +1,4 @@
-export const momentStories = [
-  {
-    imageSrc: "/qimono-children-1730248_1920.jpg",
-    captionKey: "writingCaption",
-  },
-  {
-    imageSrc: "/sunriseforever-boys-5987483_1920.jpg",
-    captionKey: "worldCaption",
-  },
-  {
-    imageSrc: "/pezibear-children-767034_1920.jpg",
-    captionKey: "sensoryCaption",
-  },
-] as const;
+export const eventCovers = [
+  "/halloween-2026/HLW_-350.jpg",
+  "/treasure-hunt-2026/IMG_0920.jpg",
+];

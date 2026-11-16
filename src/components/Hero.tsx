@@ -109,7 +109,13 @@ export function Hero() {
                         >
                             {t.hero.ctaButton}
                         </a>
-                        {/* <p className="mt-3 text-center text-xs text-muted">{t.hero.ctaHint}</p> */}
+                        <a
+                            href="#moments"
+                            onClick={(e) => handleAnchorClick(e, "#moments")}
+                            className="mt-4 flex min-h-11 items-center justify-center gap-2 rounded-full text-sm font-semibold text-c-accent underline-offset-4 hover:underline"
+                        >
+                            {t.nav.events} <span aria-hidden="true">↓</span>
+                        </a>
                     </div>
                 </aside>
             </div>

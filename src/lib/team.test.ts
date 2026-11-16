@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
 import {
   advanceTeamMarquee,
   normalizeInfiniteScrollPosition,
@@ -8,7 +9,7 @@ import {
 } from "./team";
 import { dictionaries } from "../i18n/dictionaries";
 import { contactHandles, LINE_OA_URL, site, socialLinks } from "./site";
-import { momentStories } from "./moments";
+import { eventCovers } from "./moments";
 
 describe("teamMembers", () => {
   it("exposes every supplied staff photo with a human-readable name and role", () => {
@@ -59,28 +60,15 @@ describe("team marquee", () => {
   });
 });
 
-describe("little moments", () => {
-  it("uses the supplied stories with Thai and English captions", () => {
-    expect(momentStories).toEqual([
-      {
-        imageSrc: "/qimono-children-1730248_1920.jpg",
-        captionKey: "writingCaption",
-      },
-      {
-        imageSrc: "/sunriseforever-boys-5987483_1920.jpg",
-        captionKey: "worldCaption",
-      },
-      {
-        imageSrc: "/pezibear-children-767034_1920.jpg",
-        captionKey: "sensoryCaption",
-      },
-    ]);
-    expect(dictionaries.th.moments.writingCaption).toBe(
-      "การเล่นที่สนุก นำไปสู่การเขียนที่ดี",
-    );
-    expect(dictionaries.en.moments.writingCaption).toBe(
-      "Fun play leads to confident writing",
-    );
+describe("homepage event highlights", () => {
+  it("has a real cover photo and translated event content for each highlight", () => {
+    expect(eventCovers).toHaveLength(dictionaries.th.events.items.length);
+    expect(eventCovers).toHaveLength(dictionaries.en.events.items.length);
+    for (const imageSrc of eventCovers) {
+      expect(existsSync(`public${imageSrc}`)).toBe(true);
+    }
+    expect(dictionaries.th.moments.viewEvent).toBeTruthy();
+    expect(dictionaries.en.moments.viewEvent).toBeTruthy();
   });
 });
 

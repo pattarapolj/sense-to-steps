@@ -63,7 +63,7 @@ export function Events() {
                     </>}
                   </svg>
                 </span>
-                <h2 id={`event-${index}`} lang="en" className="font-display text-2xl leading-snug text-ink sm:text-3xl">
+                <h2 id={`event-${index}`} lang="en" className="scroll-mt-28 font-display text-2xl leading-snug text-ink sm:text-3xl">
                   {event.title}
                 </h2>
                 <p className="mt-4 flex items-center gap-2 text-base leading-relaxed text-ink">

@@ -18,8 +18,8 @@ export default function Home() {
       <div className="locale-page flex flex-1 flex-col">
         <main className="flex-1">
           <Hero />
-          <Letter />
           <Moments />
+          <Letter />
           <Services />
           <Process />
           <Team />

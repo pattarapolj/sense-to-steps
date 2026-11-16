@@ -107,20 +107,6 @@ button {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
-@keyframes moments-marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.moments-marquee-track {
-  animation: moments-marquee 32s linear infinite;
-}
-
-.moments-marquee-track:hover {
-  animation-play-state: paused;
-}
-
 .section-cream,
 .section-yellow {
   background: #fff6e8;
@@ -141,42 +127,144 @@ button {
   color: #1f1714;
 }
 
-.letter-paper {
-  background: #ffffff;
-  border: 1px solid rgba(31, 23, 20, 0.12);
-  box-shadow: 0 8px 24px rgba(31, 23, 20, 0.08);
-  border-radius: 12px;
-  transition:
-    box-shadow 200ms ease,
-    transform 200ms ease;
+.letter-mail {
+  perspective: 1800px;
+  filter: drop-shadow(0 14px 14px #493b2e30);
 }
 
-.letter-paper:hover {
-  box-shadow: 0 10px 28px rgba(31, 23, 20, 0.1);
-  transform: translateY(-2px);
+.letter-envelope {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  z-index: 2;
+  display: none;
+  width: min(94%, 30rem);
+  aspect-ratio: 1.65;
+  border: 1px solid #cbb896;
+  border-radius: 3px;
+  background: url("/letter-grain.svg"),
+    linear-gradient(32deg, #e5d2b0 34%, transparent 34.3%),
+    linear-gradient(-32deg, #efdfc2 34%, #f4e7ce 34.3%);
+  box-shadow: 0 18px 30px -15px #493b2e55, 0 2px 3px #493b2e15;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.letter-envelope-flap {
+  position: absolute;
+  inset: 0 0 40%;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: url("/letter-grain.svg"), linear-gradient(#f9eed9, #dfc9a6);
+  transform-origin: top;
+}
+
+.letter-envelope-address {
+  position: absolute;
+  inset: 63% 1rem auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #4d4031;
+}
+
+.letter-seal {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 3px double #ffffff77;
+  border-radius: 47% 53% 49% 51%;
+  background: #0870b0;
+  box-shadow: 0 3px 5px #493b2e44, inset 0 0 0 3px #065f96;
+  color: #fff6e8;
+  font-size: 1.75rem;
+  transform: translate(-50%, -50%) rotate(-10deg);
+}
+
+.letter-paper {
+  isolation: isolate;
+  color: #49331f;
+  background: url("/letter-grain.svg"), url("/letter-parchment.svg");
+  background-size: 180px 180px, 100% 100%;
+  box-shadow: inset 0 0 36px #89582238, inset 0 0 5px #80512755;
+  clip-path: polygon(0.5% 0.3%, 16% 0, 31% 0.4%, 49% 0.1%, 68% 0.4%, 86% 0, 99.6% 0.3%, 100% 15%, 99.5% 33%, 99.9% 52%, 99.6% 71%, 100% 88%, 99.5% 99.6%, 81% 100%, 63% 99.7%, 44% 100%, 24% 99.7%, 0.3% 100%, 0.7% 83%, 0.2% 64%, 0.6% 45%, 0% 23%);
+  transform: rotate(-0.6deg);
+  transform-origin: center top;
 }
 
 .letter-paper::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 1.25rem;
-  bottom: 1.25rem;
-  width: 4px;
-  border-radius: 999px;
-  background: #0870b0;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(transparent 33%, #8c602216 33.1%, #fff5ce38 33.3%, transparent 33.6%, transparent 66%, #8c602216 66.1%, #fff5ce38 66.3%, transparent 66.6%);
+  pointer-events: none;
 }
 
-.letter-lines {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 31px,
-    rgba(31, 23, 20, 0.07) 31px,
-    rgba(31, 23, 20, 0.07) 32px
-  );
+.letter-letterhead {
+  color: #735132;
+  text-transform: uppercase;
 }
 
+.letter-copy {
+  font-size: 0.9375rem;
+  line-height: 2;
+  text-wrap: pretty;
+}
+
+.letter-signature {
+  font-family: Georgia, var(--font-anuphan), serif;
+  font-style: italic;
+}
+
+.letter-signoff {
+  color: #5c3d25;
+}
+
+.letter-paper:lang(en) .letter-copy,
+.letter-paper:lang(en) .letter-greeting {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.letter-paper:lang(en) .letter-greeting {
+  font-style: italic;
+}
+
+@media (min-width: 640px) {
+  .letter-copy {
+    font-size: 1.05rem;
+  }
+}
+
+@keyframes letter-unfold {
+  from { opacity: 0; transform: rotateX(-65deg) rotate(-2deg) scaleY(0.4); }
+  to { opacity: 1; transform: rotateX(0) rotate(-0.6deg) scaleY(1); }
+}
+
+@keyframes envelope-away {
+  0%, 30% { opacity: 1; transform: translateX(-50%) rotate(-2deg); }
+  100% { opacity: 0; visibility: hidden; transform: translate(-50%, 3rem) rotate(3deg); }
+}
+
+@keyframes envelope-flap-open {
+  to { transform: rotateX(170deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .letter-mail[data-motion] .letter-envelope { display: block; }
+  .letter-mail[data-motion="ready"] .letter-paper { opacity: 0; }
+  .letter-mail[data-motion="open"] .letter-paper {
+    animation: letter-unfold 1100ms cubic-bezier(0.2, 0.65, 0.3, 1) 550ms both;
+  }
+  .letter-mail[data-motion="open"] .letter-envelope {
+    animation: envelope-away 1100ms ease both;
+  }
+  .letter-mail[data-motion="open"] .letter-envelope-flap {
+    animation: envelope-flap-open 650ms ease both;
+  }
+}
 .btn-accent {
   background: #0870b0;
   color: #ffffff;
@@ -401,15 +489,10 @@ button {
     animation: none !important;
   }
 
-  .moments-marquee-track {
-    animation: none;
-  }
-
   .hero-curve-drift {
     animation: none !important;
   }
 
-  .letter-paper:hover,
   .btn-accent:hover {
     transform: none;
   }
